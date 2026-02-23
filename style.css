@@ -1,0 +1,32 @@
+:root {
+    --shiva: #2c3e50; --parvati: #8e44ad; --ganesha: #27ae60; --subramanya: #e67e22;
+    --bg-color: #f4f7f6;
+}
+
+body { font-family: 'Segoe UI', sans-serif; background: var(--bg-color); margin: 0; padding: 20px; }
+header { text-align: center; margin-bottom: 30px; }
+
+.planner-grid {
+    display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+}
+
+.member-card {
+    background: white; width: 280px; border-radius: 15px; overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s;
+}
+
+.card-header { padding: 15px; color: white; text-align: center; }
+#shiva .card-header { background: var(--shiva); }
+#parvati .card-header { background: var(--parvati); }
+#ganesha .card-header { background: var(--ganesha); }
+#subramanya .card-header { background: var(--subramanya); }
+
+.task-list { padding: 15px; min-height: 200px; }
+.task-item { 
+    background: #f9f9f9; padding: 10px; margin-bottom: 10px; 
+    border-left: 4px solid #ddd; border-radius: 4px; font-size: 0.9em;
+}
+.task-item.recurring { border-left-color: #3498db; }
+.task-item.special { background: #fff3cd; border-left-color: #ffc107; font-weight: bold; }
+
+@media (max-width: 600px) { .member-card { width: 100%; } }
