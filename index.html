@@ -4,31 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Family Weekly Planner</title>
-    <style>
-        :root { --primary: #4a90e2; --husband: #e1f5fe; --wife: #fce4ec; --son-10: #e8f5e9; --son-5: #fff9c4; }
-        body { font-family: sans-serif; margin: 20px; }
-        h1 { text-align: center; }
-        .schedule-grid { display: grid; grid-template-columns: 80px repeat(7, 1fr); gap: 2px; }
-        .grid-header { font-weight: bold; background: #eee; padding: 10px; text-align: center; }
-        .time-slot { font-weight: bold; background: #f9f9f9; padding: 10px; }
-        .event { padding: 10px; font-size: 0.9em; }
-        .husband { background: var(--husband); }
-        .wife { background: var(--wife); }
-        .son-10 { background: var(--son-10); }
-        .son-5 { background: var(--son-5); }
-        @media (max-width: 768px) { .schedule-grid { grid-template-columns: 1fr; } }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Family Weekly Plan</h1>
-    <div class="schedule-grid">
-        <div class="grid-header">Time</div><div class="grid-header">Mon</div><div class="grid-header">Tue</div>
-        <div class="grid-header">Wed</div><div class="grid-header">Thu</div><div class="grid-header">Fri</div>
-        <div class="grid-header">Sat</div><div class="grid-header">Sun</div>
-        <div class="time-slot">Morning</div>
-        <div class="event husband">Gym</div><div class="event wife">Yoga</div>
-        <div class="event son-10">School</div><div class="event son-5">Play</div>
-        <div class="event husband">Work</div><div class="event" style="grid-column: span 2;">Family Breakfast</div>
-    </div>
+    <header>
+        <h1>Family Command Center</h1>
+        <p id="current-date"></p>
+    </header>
+
+    <main class="planner-grid">
+        <!-- Shiva (Father) -->
+        <section id="shiva" class="member-card">
+            <div class="card-header">
+                <h2>Shiva</h2>
+                <span>Father</span>
+            </div>
+            <div class="task-list"></div>
+        </section>
+
+        <!-- Parvati (Mother) -->
+        <section id="parvati" class="member-card">
+            <div class="card-header">
+                <h2>Parvati</h2>
+                <span>Mother</span>
+            </div>
+            <div class="task-list"></div>
+        </section>
+
+        <!-- Ganesha (10yr Son) -->
+        <section id="ganesha" class="member-card">
+            <div class="card-header">
+                <h2>Ganesha</h2>
+                <span>Elder Son (10)</span>
+            </div>
+            <div class="task-list"></div>
+        </section>
+
+        <!-- Subramanya (5yr Son) -->
+        <section id="subramanya" class="member-card">
+            <div class="card-header">
+                <h2>Subramanya</h2>
+                <span>Younger Son (5)</span>
+            </div>
+            <div class="task-list"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
