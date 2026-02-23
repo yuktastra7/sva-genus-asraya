@@ -17,10 +17,10 @@ const familyTasks = {
     }
 };
 
-function renderSchedule() {
-    const today = new Date();
-    const dateKey = today.toISOString().split('T')[0]; // Format: YYYY-MM-DD
-    document.getElementById('current-date').innerText = today.toDateString();
+function renderSchedule(dateKey) {
+    const key = dateKey || new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    const displayDate = new Date(key);
+    document.getElementById('current-date').innerText = displayDate.toDateString();
 
     Object.keys(familyTasks).forEach(member => {
         const container = document.querySelector(`#${member} .task-list`);
@@ -31,13 +31,33 @@ function renderSchedule() {
             container.innerHTML += `<div class="task-item recurring">🔄 ${task}</div>`;
         });
 
-        // Add Special Date Tasks (like Feb 24)
-        if (familyTasks[member].special[dateKey]) {
-            familyTasks[member].special[dateKey].forEach(task => {
+        // Add Special Date Tasks for the selected date
+        if (familyTasks[member].special[key]) {
+            familyTasks[member].special[key].forEach(task => {
                 container.innerHTML += `<div class="task-item special">📅 ${task}</div>`;
             });
         }
     });
 }
 
-document.addEventListener('DOMContentLoaded', renderSchedule);
+document.addEventListener('DOMContentLoaded', () => {
+    const datePicker = document.getElementById('date-picker');
+    const todayBtn = document.getElementById('today-btn');
+
+    // Initialize picker and render
+    const todayKey = (new Date()).toISOString().split('T')[0];
+    datePicker.value = todayKey;
+    renderSchedule(todayKey);
+
+    datePicker.addEventListener('change', (e) => {
+        if (e.target.value) {
+            renderSchedule(e.target.value);
+        }
+    });
+
+    todayBtn.addEventListener('click', () => {
+        const t = (new Date()).toISOString().split('T')[0];
+        datePicker.value = t;
+        renderSchedule(t);
+    });
+});

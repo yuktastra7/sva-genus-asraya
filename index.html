@@ -9,7 +9,11 @@
 <body>
     <header>
         <h1>Family Command Center</h1>
-        <p id="current-date"></p>
+        <div style="display:flex; gap:10px; justify-content:center; align-items:center; flex-wrap:wrap;">
+            <input type="date" id="date-picker" />
+            <button id="today-btn">Today</button>
+            <p id="current-date" style="margin:0;"></p>
+        </div>
     </header>
 
     <main class="planner-grid">
